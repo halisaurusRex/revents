@@ -1,16 +1,21 @@
-import React from 'react';
-import { Button } from 'semantic-ui-react';
+import React, {useState} from 'react';
+import EventDashboard from '../../features/events/eventDashboard/EventDashboard';
+import NavBar from '../../features/nav/NavBar';
+import { Container } from 'semantic-ui-react';
 
-function App() {
+export default function App() {
+  const [formOpen, setFormOpen]= useState(false);
+
   return (
-    <div className="App">
+
+    <>
       <h1>Re-vents</h1>
-      <button className='ui icon red button'>
-        <i className='user icon'/> CSS Button 
-      </button>
-      <Button icon='user' content='React Button' color='green'    />
-    </div>
+      <NavBar setFormOpen={setFormOpen} />
+      <Container className='main'>
+        <EventDashboard setFormOpen={setFormOpen} formOpen={formOpen}/>
+      </Container>
+    </>
   );
 }
 
-export default App;
+
